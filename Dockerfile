@@ -2,7 +2,7 @@ FROM debian:jessie
 MAINTAINER yaasita
 
 #apt
-ADD 02proxy /etc/apt/apt.conf.d/02proxy
+#ADD 02proxy /etc/apt/apt.conf.d/02proxy
 RUN apt-get update
 RUN apt-get upgrade -y
 
@@ -10,7 +10,7 @@ RUN apt-get upgrade -y
 RUN apt-get install -y openssh-server
 RUN mkdir /var/run/sshd/
 RUN mkdir /root/.ssh
-ADD authorized_keys /root/.ssh/authorized_keys
+#ADD authorized_keys /root/.ssh/authorized_keys
 RUN perl -i -ple 's/^(permitrootlogin\s)(.*)/\1yes/i' /etc/ssh/sshd_config
 RUN echo root:root | chpasswd
 
@@ -33,3 +33,4 @@ ADD jquery-file-upload/index.html /var/www/upload/index.html
 ADD php/php.ini /etc/php5/apache2/php.ini
 ADD apache/apache2.conf /etc/apache2/apache2.conf
 ADD apache/000-default.conf /etc/apache2/sites-available/000-default.conf
+RUN chmod 777 /var/www/upload/server/php/files
