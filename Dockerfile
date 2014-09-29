@@ -26,11 +26,10 @@ RUN apt-get install -y vim aptitude htop
 # jquery-file-upload
 RUN apt-get install -y php5-gd php-pear \
  libapache2-mod-php5 apache2 apache2-utils php5-apcu 
-RUN rm -rf /var/www
-RUN mkdir /var/www
-ADD 9.8.0.tar.gz /var/www/jquery.tgz
-RUN tar xvaf /var/www/jquery.tgz
-ADD jquery-file-upload/index.html /var/www/index.html
+COPY 9.8.0.tar.gz /var/www/jquery.tgz
+RUN tar xvaf /var/www/jquery.tgz -C /var/www
+RUN mv /var/www/jQuery* /var/www/upload
+ADD jquery-file-upload/index.html /var/www/upload/index.html
 ADD php/php.ini /etc/php5/apache2/php.ini
 ADD apache/apache2.conf /etc/apache2/apache2.conf
 ADD apache/000-default.conf /etc/apache2/sites-available/000-default.conf
