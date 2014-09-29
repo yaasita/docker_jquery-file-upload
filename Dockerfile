@@ -28,8 +28,8 @@ RUN apt-get install -y php5-gd php-pear \
  libapache2-mod-php5 apache2 apache2-utils php5-apcu 
 RUN rm -rf /var/www
 RUN mkdir /var/www
-ADD 9.8.0.tar.gz /var/www/
-RUN tar xvaf /var/www/
+ADD 9.8.0.tar.gz /var/www/jquery.tgz
+RUN tar xvaf /var/www/jquery.tgz
 ADD jquery-file-upload/index.html /var/www/index.html
 ADD php/php.ini /etc/php5/apache2/php.ini
 ADD apache/apache2.conf /etc/apache2/apache2.conf
